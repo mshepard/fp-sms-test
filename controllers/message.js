@@ -10,7 +10,7 @@ exports.webhook = function(request, response) {
     Subscriber.findOne({
         phone: phone
     }, function(err, sub) {
-        if (err) return respond('Doh! Don\'t know what happened, but please text back again later.');
+        if (err) return respond('Derp! Please text back again later.');
 
         if (!sub) {
             // If there's no subscriber associated with this phone number,
@@ -21,11 +21,11 @@ exports.webhook = function(request, response) {
 
             newSubscriber.save(function(err, newSub) {
                 if (err || !newSub) 
-                    return respond('I couldn\'t sign you up - try again.');
+                    return respond('We couldn\'t sign you up - try again.');
 
                 // We're signed up but not subscribed - prompt to subscribe
-                respond('Welcome to the new network in town! Reply "subscribe" to '
-                     + 'receive updates via text message.');
+                respond('Thanks for contacting us! Text "subscribe" to ' +
+                    + 'receive updates via text message.');
             });
         } else {
             // For an existing user, process any input message they sent and
@@ -48,7 +48,7 @@ exports.webhook = function(request, response) {
             subscriber.subscribed = msg === 'subscribe';
             subscriber.save(function(err) {
                 if (err)
-                    return respond('Hmm. I could not subscribe you - please try '
+                    return respond('We could not subscribe you - please try '
                         + 'again.');
 
                 // Otherwise, our subscription has been updated
@@ -62,7 +62,7 @@ exports.webhook = function(request, response) {
         } else {
             // If we don't recognize the command, text back with the list of
             // available commands
-            var responseMessage = 'Sorry, I didn\'t understand that. '
+            var responseMessage = 'Sorry, we didn\'t understand that. '
                 + 'available commands are: subscribe or unsubscribe';
 
             respond(responseMessage);
