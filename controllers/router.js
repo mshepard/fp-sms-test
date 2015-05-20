@@ -15,9 +15,13 @@ module.exports = function(app) {
     app.post('/message/send', message.sendMessages);
 
 	// list subscribers
-	app.get('/subscribers', function (request, respose) {
+	app.get('/subscribers', function (request, response) {
 		Subscriber.find({}, function (err, docs) {
-			respose.json(docs);
+			response.render('subscribers', {
+				errors: request.flash('errors'),
+				successes: request.flash('successes'),
+				subscribers: subscribers
+			});
 		});
 	});
 };
