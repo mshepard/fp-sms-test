@@ -11,7 +11,7 @@ exports.showForm = function(request, response) {
 // Render subscriber list
 exports.listSubscribers = function(request, response) {
     // Render form, with any success or error flash messages
-	var subscribers = Subscriber.find({
+	var mySubscribers = Subscriber.find({
         subscribed: true
     }, function(err, docs) {
         if (err) {
@@ -28,6 +28,6 @@ exports.listSubscribers = function(request, response) {
     response.render('subscribers', {
         errors: request.flash('errors'),
         successes: request.flash('successes'),
-		subscribers: subscribers
+		subscribersListArray: mySubscribers
     });
 };
