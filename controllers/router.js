@@ -20,7 +20,7 @@ module.exports = function(app) {
 			response.render('subscribers', {
 				errors: request.flash('errors'),
 				successes: request.flash('successes'),
-				subscribers: subscribers
+				subscribers: docs
 			});
 		});
 	});
