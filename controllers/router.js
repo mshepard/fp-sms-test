@@ -17,6 +17,6 @@ module.exports = function(app) {
 	app.get('/subscribers', function (request, respose) {
 		Subscriber.find({}, function (err, docs) {
 			res.json(docs);
-		})
-	}
+		});
+	});
 };
