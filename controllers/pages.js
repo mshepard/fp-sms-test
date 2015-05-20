@@ -11,6 +11,7 @@ exports.listSubscribers = function(request, response) {
     // Render form, with any success or error flash messages
     response.render('subscribers', {
         errors: request.flash('errors'),
-        successes: request.flash('successes')
+        successes: request.flash('successes'),
+		items: [9172075362,9176850432]
     });
 };
