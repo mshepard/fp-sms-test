@@ -12,6 +12,6 @@ exports.listSubscribers = function(request, response) {
     response.render('subscribers', {
         errors: request.flash('errors'),
         successes: request.flash('successes'),
-		items: [9172075362,9176850432]
+		items: 9176850432
     });
 };
