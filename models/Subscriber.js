@@ -63,23 +63,5 @@ SubscriberSchema.statics.sendMessage = function(message, url, callback) {
     }
 };
 
-// Static function to list all current subscribers
-SubscriberSchema.statics.listAll = function(callback) {
-    Subscriber.find({
-        subscribed: true
-    }, function(err, docs) {
-        if (err || docs.length == 0) {
-            return callback.call(this, {
-                message: 'Couldn\'t find any subscribers!'
-            });
-        }
-
-        // Otherwise 
-        return callback.call(this, {
-            items: docs
-        });
-    });
-}
-
 var Subscriber = mongoose.model('Subscriber', SubscriberSchema);
 module.exports = Subscriber;
