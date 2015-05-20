@@ -12,6 +12,5 @@ exports.listSubscribers = function(request, response) {
     response.render('subscribers', {
         errors: request.flash('errors'),
         successes: request.flash('successes'),
-		items: Subscriber.listAll();
     });
 };
