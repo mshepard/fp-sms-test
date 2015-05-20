@@ -12,4 +12,7 @@ module.exports = function(app) {
 
     // Handle form submission and send messages to subscribers
     app.post('/message/send', message.sendMessages);
+	
+	// list subscribers
+	app.get('/subscribers', pages.listSubscribers);
 };

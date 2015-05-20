@@ -6,3 +6,11 @@ exports.showForm = function(request, response) {
         successes: request.flash('successes')
     });
 };
+// Render subscriber list
+exports.listSubscribers = function(request, response) {
+    // Render form, with any success or error flash messages
+    response.render('subscribers', {
+        errors: request.flash('errors'),
+        successes: request.flash('successes')
+    });
+};
