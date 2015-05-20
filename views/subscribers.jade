@@ -6,5 +6,6 @@ block content
   p.
     List of current subscribers
 
-  p.
-    !{subscribers}
+  ul
+    each val in subscribers
+	  li= val.phone
