@@ -19,8 +19,8 @@ exports.listSubscribers = function(request, response) {
         }
         // create array of subscribers numbers
 		var subscriberList = [];
-        docs.forEach(function(subscriber) {
-        	subscriberList.push(subscriber.phone);
+        docs.forEach(function(sub) {
+        	subscriberList.push(sub.phone);
         });
 		return subscriberList;
     });
