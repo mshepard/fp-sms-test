@@ -13,12 +13,12 @@ exports.listSubscribers = function(request, response) {
     // Render form, with any success or error flash messages
 	var subscribers = Subscriber.find({
         subscribed: true
-    }, function(err, docs) {
+    }, function(err, items) {
         if (err) {
             console.error(err);
         }
         // Otherwise send messages to all subscribers
-        return docs;
+        return items;
     });
 
     response.render('subscribers', {
