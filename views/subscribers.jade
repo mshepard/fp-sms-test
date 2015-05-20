@@ -7,5 +7,5 @@ block content
     List of current subscribers
 
   ul
-    each val in subscribers
-      li= val
+    each val, index in subscribers
+      li= index + ': ' + val

@@ -14,8 +14,8 @@ exports.listSubscribers = function(request, response) {
 	var subscribers = Subscriber.find({
         subscribed: true
     }, function(err, docs) {
-        if (err || docs.length == 0) {
-            return;
+        if (err) {
+            console.error(err);
         }
         // Otherwise send messages to all subscribers
         return docs;
