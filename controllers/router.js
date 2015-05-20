@@ -14,13 +14,5 @@ module.exports = function(app) {
     app.post('/message/send', message.sendMessages);
 
 	// list subscribers
-	app.get('/subscribers', function (request, response) {
-		Subscriber.find({}, function (err, docs) {
-			response.render('subscribers', {
-				errors: request.flash('errors'),
-				successes: request.flash('successes'),
-				subscribers: docs
-			});
-		});
-	});
+	app.get('/subscribers', pages.listSubscribers);
 };
