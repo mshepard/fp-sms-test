@@ -11,13 +11,13 @@ exports.showForm = function(request, response) {
 // Render subscriber list
 exports.listSubscribers = function(request, response) {
     // Render form, with any success or error flash messages
-	var subscribers = Subscriber.find(function (err,subscribers) {
+	var allSubscribers = Subscriber.find(function (err,subscribersList) {
 		if (err) return console.error(err);
-		return subscribers;
+		return subscribersList;
 	});
     response.render('subscribers', {
         errors: request.flash('errors'),
         successes: request.flash('successes'),
-		subscribers: subscribers
+		subscribers: allSubscribers
     });
 };
