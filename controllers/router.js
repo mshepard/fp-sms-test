@@ -14,5 +14,9 @@ module.exports = function(app) {
     app.post('/message/send', message.sendMessages);
 
 	// list subscribers
-	app.get('/subscribers', pages.listSubscribers);
+	app.get('/subscribers', function (request, respose) {
+		Subscriber.find({}, function (err, docs) {
+			res.json(docs);
+		})
+	}
 };
