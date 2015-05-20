@@ -17,7 +17,7 @@ module.exports = function(app) {
 	// list subscribers
 	app.get('/subscribers', function (request, respose) {
 		Subscriber.find({}, function (err, docs) {
-			res.json(docs);
+			respose.json(docs);
 		});
 	});
 };
