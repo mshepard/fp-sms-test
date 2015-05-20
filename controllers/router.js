@@ -1,5 +1,6 @@
 var pages = require('./pages');
 var message = require('./message');
+var Subscriber = require('../models/Subscriber');
 
 // Map routes to controller functions
 module.exports = function(app) {
