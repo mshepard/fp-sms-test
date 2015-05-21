@@ -52,18 +52,21 @@ exports.webhook = function(request, response) {
                         + 'again.');
 
                 // Otherwise, our subscription has been updated
-                var responseMessage = 'You are now subscribed for updates.';
+                var responseMessage = 'You are now subscribed for updates. Text "more" for, well, more ;-)';
                 if (!subscriber.subscribed)
                     responseMessage = 'You have unsubscribed. Text "start"'
                         + ' to start receiving updates again.';
 
                 respond(responseMessage);
             });
-        } else {
+        } else if (msg === 'more') {
+			responseMessage = 'Ha. For that you\'ll have to wait';
+			respond(responseMessage);
+		} else {
             // If we don't recognize the command, text back with the list of
             // available commands
             var responseMessage = 'Sorry, I didn\'t understand that. '
-                + 'available commands are: subscribe or unsubscribe';
+                + 'available commands are: subscribe, unsubscribe or more';
 
             respond(responseMessage);
         }
