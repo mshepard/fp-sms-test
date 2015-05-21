@@ -66,7 +66,7 @@ exports.webhook = function(request, response) {
             // If we don't recognize the command, text back with the list of
             // available commands
             var responseMessage = 'Sorry, I didn\'t understand that. '
-                + 'available commands are: subscribe, unsubscribe or more';
+                + 'Available commands are: subscribe, unsubscribe or more';
 
             respond(responseMessage);
         }
