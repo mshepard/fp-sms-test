@@ -58,7 +58,7 @@ exports.webhook = function(request, response) {
             });
         } else if (msg.indexOf('jetplow') > -1) {
 			var email = extractEmail(msg);
-			console.log('email = %d', email);
+			console.log('email = ' + email);
 			if (email === null) {
 				var responseMessage = 'Hmmm. That doesn\'t seem like a proper email address. Please try again!';
 			} else {
@@ -76,6 +76,7 @@ exports.webhook = function(request, response) {
 	function extractEmail(StrObj) {
 		var email = '<none>'; // if no match, use this
 		var emailsArray = StrObj.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9._-]+)/gi);
+		console.log('emailsArray[0] = ' + emailsArray[0]);
 		if (emailsArray) {
 			email = emailsArray[0];
 		} 
