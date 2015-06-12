@@ -24,8 +24,7 @@ exports.webhook = function(request, response) {
                     return respond('Oops. I couldn\'t sign you up - try again.');
 
                 // We're signed up but not subscribed - prompt to subscribe
-                respond('Greetings from the new network in town! Text "subscribe" to '
-                    + 'receive updates via text message.');
+                respond('Greetings from the new network in town! Text "subscribe" to receive free offers via text message.');
             });
         } else {
             // For an existing user, process any input message they sent and
@@ -48,30 +47,41 @@ exports.webhook = function(request, response) {
             subscriber.subscribed = msg === 'subscribe';
             subscriber.save(function(err) {
                 if (err)
-                    return respond('I could not subscribe you - please try '
-                        + 'again.');
+                    return respond('I could not subscribe you - please try again.');
 
                 // Otherwise, our subscription has been updated. Send first msg
                 var responseMessage = 'You are now subscribed for updates. For info on how you can get 30 mins free voice and 100 MB free data, reply JETPLOW followed by your email address to get started.';
                 if (!subscriber.subscribed)
-                    responseMessage = 'You have unsubscribed. Text "start"'
-                        + ' to start receiving updates again.';
+                    responseMessage = 'You have unsubscribed. Text START to start receiving updates again.';
 
                 respond(responseMessage);
             });
         } else if (msg.indexOf('jetplow') > -1) {
-			responseMessage = 'Did you know that firmware that can be implanted to create a permanent backdoor in a Cisco PIX series and ASA firewalls is called JETPLOW?';
+			var responseMessage = 'Did you know that firmware that can be implanted to create a permanent backdoor in a Cisco PIX series and ASA firewalls is called JETPLOW?';
 			respond(responseMessage);
+			var email = extractEmail(msg);
+			if (email) {
+				var responseMessage = 'Fantastic,' + email + ', now reply HOWLERMONKEY followed by your name (Firstname Lastname) and to start the process';
+				respond(responseMessage);
+			} else {
+				var responseMessage = 'Hmmm. That doesn\'t seem like a proper email address. Please try again!';
+				respond(responseMessage);
+			}
 		} else {
-            // If we don't recognize the command, text back with the list of
-            // available commands
-            var responseMessage = 'Sorry, I didn\'t understand that. '
-                + 'Available commands are: subscribe, unsubscribe or more';
-
+            // If we don't recognize the command
+            var responseMessage = 'Sorry, I didn\'t understand that. ';
             respond(responseMessage);
         }
     }
-
+	// Extract email from string
+	function extractEmail(StrObj) {
+		var emailsArray = StrObj.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9._-]+)/gi);
+		if (emailsArray) {
+			return emailsArray[0];
+		} else {
+			return null;
+		}
+	}
     // Set Content-Type response header and render XML (TwiML) response in a 
     // Jade template - sends a text message back to user
     function respond(message) {
