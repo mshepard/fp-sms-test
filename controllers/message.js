@@ -60,11 +60,11 @@ exports.webhook = function(request, response) {
 			var email = extractEmail(msg);
 			console.log('email = ' + email);
 			if (email === null) {
-				var responseMessage = 'Hmmm. That doesn\'t seem like a proper email address. Please try again!\n\n';
+				var responseMessage = 'Hmmm. That doesn\'t seem like a proper email address. Please try again!';
 			} else {
-				var responseMessage = 'OK,' + email + ', now reply HOWLERMONKEY followed by your name (Firstname Lastname) and to start the process.\n\n';
+				var responseMessage = 'OK,' + email + ', now reply HOWLERMONKEY followed by your name (Firstname Lastname) and to start the process.';
 			}
-			responseMessage += ' By the way, did you know that firmware that can be implanted to create a permanent backdoor in a Cisco PIX series and ASA firewalls is called JETPLOW?'
+			responseMessage += '\n+++\nBy the way, did you know that firmware that can be implanted to create a permanent backdoor in a Cisco PIX series and ASA firewalls is called JETPLOW?'
 			respond(responseMessage);
 		} else {
             // If we don't recognize the command
@@ -74,7 +74,7 @@ exports.webhook = function(request, response) {
     }
 	// Extract email from string
 	function extractEmail(StrObj) {
-		var email = '<none>'; // if no match, use this
+		var email = null; // if no match, use this
 		var emailsArray = StrObj.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
 		if (emailsArray) {
 			email = emailsArray[0];
