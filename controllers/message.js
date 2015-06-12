@@ -74,12 +74,12 @@ exports.webhook = function(request, response) {
     }
 	// Extract email from string
 	function extractEmail(StrObj) {
+		var email = '<none>'; // if no match, use this
 		var emailsArray = StrObj.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9._-]+)/gi);
 		if (emailsArray) {
-			return emailsArray[0];
-		} else {
-			return null;
-		}
+			email = emailsArray[0];
+		} 
+		return email;
 	}
     // Set Content-Type response header and render XML (TwiML) response in a 
     // Jade template - sends a text message back to user
