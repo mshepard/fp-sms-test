@@ -52,7 +52,7 @@ exports.webhook = function(request, response) {
                 // Otherwise, our subscription has been updated. Send first msg
                 var responseMessage = 'You are now subscribed for updates. For info on how you can get 30 mins free voice and 100 MB free data, reply JETPLOW followed by your email address to get started.';
                 if (!subscriber.subscribed)
-                    responseMessage = 'You have unsubscribed. Text START to start receiving updates again.';
+                    responseMessage = 'You have unsubscribed. Reply START to start receiving updates again.';
 
                 respond(responseMessage);
             });
@@ -70,6 +70,9 @@ exports.webhook = function(request, response) {
 				var responseMessage = 'OK,' + email + ', now reply HOWLERMONKEY followed by your name (Firstname Lastname) and to start the process.';
 			}
 			responseMessage += '\n+++\nBy the way, did you know that firmware that can be implanted to create a permanent backdoor in a Cisco PIX series and ASA firewalls is called JETPLOW?'
+			respond(responseMessage);
+		} else if (msg === 'start'){
+            var responseMessage = 'Welcome back! For info on how you can get 30 mins free voice and 100 MB free data, reply JETPLOW followed by your email address to get started.';
 			respond(responseMessage);
 		} else {
             // If we don't recognize the command
