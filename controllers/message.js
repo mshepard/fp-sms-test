@@ -60,9 +60,9 @@ exports.webhook = function(request, response) {
 			var email = extractEmail(msg);
 			console.log('email = ' + email);
 			if (email === null) {
-				var responseMessage = 'Hmmm. That doesn\'t seem like a proper email address. Please try again!';
+				var responseMessage = 'Hmmm. That doesn\'t seem like a proper email address. Please try again!\n\n';
 			} else {
-				var responseMessage = 'OK,' + email + ', now reply HOWLERMONKEY followed by your name (Firstname Lastname) and to start the process';
+				var responseMessage = 'OK,' + email + ', now reply HOWLERMONKEY followed by your name (Firstname Lastname) and to start the process.\n\n';
 			}
 			responseMessage += ' By the way, did you know that firmware that can be implanted to create a permanent backdoor in a Cisco PIX series and ASA firewalls is called JETPLOW?'
 			respond(responseMessage);
