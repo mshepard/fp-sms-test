@@ -57,16 +57,14 @@ exports.webhook = function(request, response) {
                 respond(responseMessage);
             });
         } else if (msg.indexOf('jetplow') > -1) {
-			var responseMessage = 'Did you know that firmware that can be implanted to create a permanent backdoor in a Cisco PIX series and ASA firewalls is called JETPLOW?';
-			respond(responseMessage);
 			var email = extractEmail(msg);
 			if (email) {
-				var responseMessage = 'Fantastic,' + email + ', now reply HOWLERMONKEY followed by your name (Firstname Lastname) and to start the process';
-				respond(responseMessage);
+				var responseMessage = 'OK,' + email + ', now reply HOWLERMONKEY followed by your name (Firstname Lastname) and to start the process';
 			} else {
 				var responseMessage = 'Hmmm. That doesn\'t seem like a proper email address. Please try again!';
-				respond(responseMessage);
 			}
+			responseMessage += ' By the way, did you know that firmware that can be implanted to create a permanent backdoor in a Cisco PIX series and ASA firewalls is called JETPLOW?'
+			respond(responseMessage);
 		} else {
             // If we don't recognize the command
             var responseMessage = 'Sorry, I didn\'t understand that. ';
