@@ -76,7 +76,7 @@ exports.webhook = function(request, response) {
 	function extractEmail(StrObj) {
 		var email = '<none>'; // if no match, use this
 		var emailsArray = StrObj.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9._-]+)/gi);
-		console.log('emailsArray[0] = ' + emailsArray[0]);
+		console.log(emailsArray[0]);
 		if (emailsArray) {
 			email = emailsArray[0];
 		} 
