@@ -58,6 +58,7 @@ exports.webhook = function(request, response) {
             });
         } else if (msg.indexOf('jetplow') > -1) {
 			var email = extractEmail(msg);
+			console.log('email = %d', email);
 			if (email === null) {
 				var responseMessage = 'Hmmm. That doesn\'t seem like a proper email address. Please try again!';
 			} else {
