@@ -66,7 +66,7 @@ exports.webhook = function(request, response) {
 	            subscriber.save(function(err) {
 	                if (err)
 	                    console.error(err);
-				}
+				});
 				var responseMessage = 'OK,' + email + ', now reply HOWLERMONKEY followed by your name (Firstname Lastname) and to start the process.';
 			}
 			responseMessage += '\n+++\nBy the way, did you know that firmware that can be implanted to create a permanent backdoor in a Cisco PIX series and ASA firewalls is called JETPLOW?'
