@@ -10,7 +10,8 @@ var SubscriberSchema = new mongoose.Schema({
     subscribed: {
         type: Boolean,
         default: false
-    }
+    },
+	email: String,
 });
 
 // Static function to send a message to all current subscribers
