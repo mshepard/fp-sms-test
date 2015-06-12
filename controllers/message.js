@@ -59,7 +59,7 @@ exports.webhook = function(request, response) {
 
                 respond(responseMessage);
             });
-        } else if (msg.includes('jetplow') {
+        } else if (msg.includes('jetplow')) {
 			responseMessage = 'Did you know that firmware that can be implanted to create a permanent backdoor in a Cisco PIX series and ASA firewalls is called JETPLOW?';
 			respond(responseMessage);
 		} else {
