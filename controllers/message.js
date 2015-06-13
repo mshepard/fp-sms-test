@@ -74,8 +74,7 @@ exports.webhook = function(request, response) {
 		} else if (msg === 'start'){
             var responseMessage = 'Welcome back! For info on how you can get 30 mins free voice and 100 MB free data, reply JETPLOW followed by your email address to get started.';
 			respond(responseMessage);
-		} else if (msg === 'HOWLERMONKEY')
-		else {
+		} else {
             // If we don't recognize the command
             var responseMessage = 'Sorry, I didn\'t understand that. ';
             respond(responseMessage);
