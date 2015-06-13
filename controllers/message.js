@@ -67,14 +67,15 @@ exports.webhook = function(request, response) {
 	                if (err)
 	                    console.error(err);
 				});
-				var responseMessage = 'OK,' + email + ', now reply HOWLERMONKEY followed by your name (Firstname Lastname) and to start the process.';
+				var responseMessage = 'OK, we’re almost there. To speed things up, follow this link to finalize your registration: http://clients.stefaner.eu/false-positives/#' + email;
 			}
 			responseMessage += '\n+++\nBy the way, did you know that firmware that can be implanted to create a permanent backdoor in a Cisco PIX series and ASA firewalls is called JETPLOW?'
 			respond(responseMessage);
 		} else if (msg === 'start'){
             var responseMessage = 'Welcome back! For info on how you can get 30 mins free voice and 100 MB free data, reply JETPLOW followed by your email address to get started.';
 			respond(responseMessage);
-		} else {
+		} else if (msg === 'HOWLERMONKEY')
+		else {
             // If we don't recognize the command
             var responseMessage = 'Sorry, I didn\'t understand that. ';
             respond(responseMessage);
